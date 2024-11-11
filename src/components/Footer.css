@@ -1,0 +1,28 @@
+/* Footer.css */
+
+.footer {
+    text-align: center;
+    padding: 1rem;
+    background-color: #2a9d8f;
+    color: white;
+}
+
+.footer p{
+    margin: 0.5rem 0;
+}
+
+.footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.footer-links a{
+    color: white;
+    text-decoration: none;
+}
+
+.footer-links a:hover{
+    text-decoration: underline;
+}
