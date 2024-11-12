@@ -7,6 +7,10 @@
     font-size: 0.9rem;
     display: flex;
     justify-content: center;
+    position: fixed;
+    top: 0;
+    width: 99%;
+    z-index: 1000;
 }
 .top-bar-content {
     display: flex;
