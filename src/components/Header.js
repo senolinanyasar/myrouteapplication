@@ -11,6 +11,7 @@ const Header = () => {
                 <a href="#industries">Sektörler</a>
                 <a href="#pricing">Fiyatlandırma</a>
                 <a href="#about">Hakkımızda</a>
+                <a href='contact'>İletişim</a>
             </nav>
             <div className="header-buttons">
                 <button className="login-button">Giriş</button>

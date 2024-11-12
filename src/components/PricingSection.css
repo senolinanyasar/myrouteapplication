@@ -1,0 +1,48 @@
+/* PricingSection.css */
+
+.pricing{
+    padding: 3rem;
+    background-color: #f4a261;
+    color: #264653;
+    text-align: center;
+}
+
+.pricing h2{
+    font-size: 2rem;
+    margin-bottom: 2rem;
+}
+
+.pricing-cards {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.pricing-card {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 10px;
+    width: 250px;
+    margin: 1rem;
+    box-shadow: 0px 4px 8px  rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+}
+
+.pricing-card:hover{
+    transform: scale(1.05);
+}
+
+.cta-button{
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+    color: white;
+    background-color: #2a9d8f;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.cta-button:hover{
+    background-color: #e76f51;
+}

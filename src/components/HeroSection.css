@@ -43,4 +43,6 @@
     position: relative;
     z-index: 1;
 }
-
+.cta-button:hover {
+    background-color: #f4a261;
+  }

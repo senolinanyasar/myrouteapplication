@@ -6,6 +6,9 @@
     padding: 1rem 2rem;
     background-color: #2a9d8f;
     color: white;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
 
 
@@ -18,6 +21,9 @@
     color: white;
     text-decoration: none;
 }
+.header-nav a:hover {
+    color: #e9c46a;
+  }
 
 .header-buttons button{
     margin-left: 1rem;
