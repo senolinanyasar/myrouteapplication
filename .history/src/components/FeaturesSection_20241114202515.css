@@ -55,7 +55,7 @@
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    text-align: center;
+    align-items: center;
 }
 
 .cta-button:hover {

@@ -1,7 +1,6 @@
 // HeroSection.js
 import React from 'react';
 import './HeroSection.css';
-import herosectionimage from '../images/hero1.webp';
 
 const HeroSection = () =>{
     return(
@@ -13,7 +12,7 @@ const HeroSection = () =>{
                     <button className='cta-button'>Let's Get it</button>
                 </div>
                 <div className='hero-image'>
-                    <img src={herosectionimage} alt="Hero"/>
+                    <img src='' alt="Hero"/>
                 </div>
             </div>
         </section>

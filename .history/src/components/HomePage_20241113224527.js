@@ -6,7 +6,6 @@ import HeroSection from './HeroSection';
 import FeaturesSection from './FeaturesSection';
 import PricingSection from './PricingSection';
 import IndustriesSection from './IndustriesSection';
-import SupportSection from './SupportSection';
 import Footer from './Footer';
 
 const HomePage = () => {
@@ -18,7 +17,6 @@ const HomePage = () => {
             <FeaturesSection />
             <PricingSection />
             <IndustriesSection />
-            <SupportSection />
             <Footer />
         </div>
     );

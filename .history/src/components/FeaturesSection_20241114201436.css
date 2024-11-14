@@ -24,7 +24,7 @@
 }
 
 .feature:nth-child(even) {
-    flex-direction: row-reverse;
+    flex-direction: row;
 }
 
 .feature-text {
@@ -55,7 +55,6 @@
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    text-align: center;
 }
 
 .cta-button:hover {
