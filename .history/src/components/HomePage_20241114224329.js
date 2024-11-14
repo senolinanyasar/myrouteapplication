@@ -17,8 +17,8 @@ const HomePage = () => {
             <HeroSection />
             <FeaturesSection />
             <SupportSection />
-            <IndustriesTab />
             <PricingSection />
+            <IndustriesTab />
             <Footer />
         </div>
     );

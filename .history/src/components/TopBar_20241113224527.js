@@ -6,9 +6,9 @@ const TopBar = () => {
     return (
         <div className="top-bar">
             <div className="top-bar-content">
-                <span>Help</span>
+                <span>Destek</span>
                 <span>0232 323 3223</span>
-                <a href="#contact">Contact</a>
+                <a href="#contact">İletişim</a>
             </div>
         </div>
     );

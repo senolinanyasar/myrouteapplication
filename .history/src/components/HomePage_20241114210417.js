@@ -5,8 +5,8 @@ import Header from './Header';
 import HeroSection from './HeroSection';
 import FeaturesSection from './FeaturesSection';
 import PricingSection from './PricingSection';
+import IndustriesSection from './IndustriesSection';
 import SupportSection from './SupportSection';
-import IndustriesTab from './IndustriesTab';
 import Footer from './Footer';
 
 const HomePage = () => {
@@ -16,8 +16,8 @@ const HomePage = () => {
             <Header />
             <HeroSection />
             <FeaturesSection />
+            <
             <SupportSection />
-            <IndustriesTab />
             <PricingSection />
             <Footer />
         </div>

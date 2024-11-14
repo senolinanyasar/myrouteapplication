@@ -1,0 +1,87 @@
+/*IndustriesTab */
+
+.industries-tab{
+    background-color: #ffffff;
+    padding: 4rem 2rem;
+    text-align: center;
+}
+
+.tabs-title{
+    font-size: 2rem;
+    font-weight: 600;
+    color: #264653;
+    margin-bottom: 2rem;
+}
+
+.tabs-buttons{
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.tabs-buttons button{
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+    color: #2f5d5b;
+    background-color: #e0f7e7;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.tabs-buttons button:hover,
+.tabs-buttons button:focus{
+    background-color: #9fe7c0;
+}
+
+.tabs-content{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #f7faff;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    max-width: 1000px;
+    margin:  0 auto;
+}
+
+.tabs-text {
+    flex: 1;
+    text-align: left;
+    padding-left: 2rem;
+}
+
+.tabs-text h3 {
+    font-size: 1.5rem;
+    color: #264653;
+    margin-bottom: 1rem;
+}
+.tabs-text p {
+    color: #6d6d6d;
+    margin-bottom: 1.5rem;
+}
+
+.tabs-feature{
+    margin-bottom: 1rem;
+}
+
+.tabs-feature strong {
+    display: block;
+    color: #264653;
+    margin-bottom: 0.3rem;
+}
+
+.tabs-image{
+    flex: 1;
+    max-width: 400px;
+}
+
+.tabs-image img{
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    object-fit: cover;
+}
