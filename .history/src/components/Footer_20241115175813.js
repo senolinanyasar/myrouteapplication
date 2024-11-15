@@ -12,7 +12,7 @@ const Footer = () => {
                     <div className='footer-logo'>
                         <h2>My Route Application</h2>
                     </div>
-                    <p>Kazımdirik Mahallesi, Üniversite <br />Caddesi Ağaçlı Yol No: 37-39, <br />35100 Bornova/İzmir</p>
+                    <p>Kazımdirik Mahallesi, Üniversite Caddesi Ağaçlı Yol No: 37-39, 35100 Bornova/İzmir</p>
                     <div className='social-icons'>
                         <FaFacebook />
                         <FaTwitter />
@@ -21,9 +21,7 @@ const Footer = () => {
                         <FaYoutube />
                     </div>
                 </div>
-                
                 <div className="footer-right">
-                <br/><br/><br/><br/>
                     <div className='footer-section'>
                         <h4>Features</h4>
                         <ul>

@@ -20,14 +20,14 @@
 .footer-logo h2{
     font-size: 1.5rem;
     color: #ffffff;
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
 }
 
 
 .footer-left p{
     color: #c3c3c3;
     font-size: 0.9rem;
-    margin-bottom: 2.5rem;
+    margin-bottom: 1.5rem;
 }
 
 .social-icons{
@@ -50,7 +50,6 @@
     display: flex;
     gap: 3rem;
     flex: 2;
-    margin-left: 5rem;
 }
 
 .footer-section{
@@ -65,7 +64,6 @@
     list-style: none;
     padding: 0;
     margin: 0;
-    
 }
 
 .footer-section ul li{

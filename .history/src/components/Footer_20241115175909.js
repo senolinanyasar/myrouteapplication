@@ -21,9 +21,7 @@ const Footer = () => {
                         <FaYoutube />
                     </div>
                 </div>
-                
                 <div className="footer-right">
-                <br/><br/><br/><br/>
                     <div className='footer-section'>
                         <h4>Features</h4>
                         <ul>

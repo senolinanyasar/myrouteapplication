@@ -20,7 +20,7 @@
 .footer-logo h2{
     font-size: 1.5rem;
     color: #ffffff;
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
 }
 
 
@@ -50,7 +50,6 @@
     display: flex;
     gap: 3rem;
     flex: 2;
-    margin-left: 5rem;
 }
 
 .footer-section{
@@ -65,7 +64,6 @@
     list-style: none;
     padding: 0;
     margin: 0;
-    
 }
 
 .footer-section ul li{
