@@ -18,7 +18,7 @@ const HomePage = () => {
             <SupportSection />
             <IndustriesTab />
             <PricingSection />
-           
+            <Footer />
         </div>
     );
 };

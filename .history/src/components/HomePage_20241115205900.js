@@ -12,13 +12,14 @@ import Footer from './Footer';
 const HomePage = () => {
     return (
         <div>
-        
+            <TopBar /> 
+            <Header />
             <HeroSection />
             <FeaturesSection />
             <SupportSection />
             <IndustriesTab />
             <PricingSection />
-           
+            <Footer />
         </div>
     );
 };
