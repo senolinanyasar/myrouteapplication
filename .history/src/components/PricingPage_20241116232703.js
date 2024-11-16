@@ -80,7 +80,7 @@ const PricingPage = () => {
                     <p className="subtext">
                         Designed for businesses without digital sales operations.
                     </p>
-                    <button className="try-button">Try Now !</button>
+                    <button className="try-button">14-Day Free Trial</button>
                     <ul>
                         <li><FaCheck /> Basic Accounting</li>
                         <li><FaCheck /> Customer Management</li>
@@ -97,7 +97,7 @@ const PricingPage = () => {
                     <p className="subtext">
                         Take your sales digital and manage everything in one place.
                     </p>
-                    <button className="try-button">Try Now !</button>
+                    
 
                     <ul>
                         <li><FaCheck /> Basic Accounting</li>
@@ -107,6 +107,7 @@ const PricingPage = () => {
                         <li><FaCheck /> Location-Based Customer Search</li>
                         <li><FaCheck /> Advanced Reporting</li>
                     </ul>
+                    <button className="try-button">14-Day Free Trial</button>
                 </div>
             </div>
 

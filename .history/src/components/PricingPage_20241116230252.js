@@ -13,7 +13,7 @@ const featuresData = [
     {
         title: 'Customer Management',
         description:
-            'Organize, update, and manage your customer list effectively. Track customer details and communication history.',
+            'Organize, update, and manage your customer database effectively. Track customer details and communication history.',
     },
     {
         title: 'Customer Tracking',
@@ -40,7 +40,11 @@ const featuresData = [
         description:
             'Generate detailed reports on sales, inventory, and customer activity to make data-driven decisions.',
     },
-   
+    {
+        title: 'Multi-User Access',
+        description:
+            'Allow team members to access and manage different areas of the system with customizable permissions.',
+    },
 ];
 
 const PricingPage = () => {
@@ -54,7 +58,7 @@ const PricingPage = () => {
     return (
         <section className="pricing-page">
             <div className="pricing-header">
-                <h1>Manage Your Sales and Customers Easily!</h1>
+                <h1>Manage Your Accounting with Ease!</h1>
                 <p>Start using Turkey's most comprehensive program at affordable prices.</p>
                 <div className="toggle-buttons">
                     <button
@@ -80,7 +84,7 @@ const PricingPage = () => {
                     <p className="subtext">
                         Designed for businesses without digital sales operations.
                     </p>
-                    <button className="try-button">Try Now !</button>
+                    <button className="try-button">14-Day Free Trial</button>
                     <ul>
                         <li><FaCheck /> Basic Accounting</li>
                         <li><FaCheck /> Customer Management</li>
@@ -97,7 +101,7 @@ const PricingPage = () => {
                     <p className="subtext">
                         Take your sales digital and manage everything in one place.
                     </p>
-                    <button className="try-button">Try Now !</button>
+                    <button className="try-button">14-Day Free Trial</button>
 
                     <ul>
                         <li><FaCheck /> Basic Accounting</li>
@@ -157,6 +161,11 @@ const PricingPage = () => {
                             <td><FaTimes className="icon-times" /></td>
                             <td><FaCheck className="icon-check" /></td>
                         </tr>
+                        <tr>
+                            <td>Multi-User Access</td>
+                            <td><FaTimes className="icon-times" /></td>
+                            <td><FaCheck className="icon-check" /></td>
+                        </tr>
                     </tbody>
                 </table>
             </div>
@@ -168,7 +177,7 @@ const PricingPage = () => {
                             <h3>{feature.title}</h3>
                             <span>{expandedIndex === index ? '-' : '+'}</span>
                         </div>
-                        {expandedIndex === index && (
+                        {expandedIndex == index && (
                             <div className="feature-description">
                                 <p>{feature.description}</p>
                             </div>

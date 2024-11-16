@@ -4,57 +4,14 @@ import React, { useState } from "react";
 import './PricingPage.css';
 import { FaCheck, FaTimes } from "react-icons/fa";
 
-const featuresData = [
-    {
-        title: 'Location-Based Customer Search',
-        description:
-            'Quickly find potential customers in a specific region based on industry and proximity using Google Maps integration.',
-    },
-    {
-        title: 'Customer Management',
-        description:
-            'Organize, update, and manage your customer list effectively. Track customer details and communication history.',
-    },
-    {
-        title: 'Customer Tracking',
-        description:
-            'Monitor your customers’ activity and interaction history to ensure consistent and effective communication.',
-    },
-    {
-        title: 'Sales Tracking',
-        description:
-            'Track sales performance, identify trends, and analyze sales data to optimize your revenue streams.',
-    },
-    {
-        title: 'Basic Accounting',
-        description:
-            'Keep track of your financial data, including income, expenses, and profit margins, with easy-to-use tools.',
-    },
-    {
-        title: 'Inventory Tracking',
-        description:
-            'Monitor stock levels in real-time, receive alerts for low inventory, and streamline inventory management.',
-    },
-    {
-        title: 'Advanced Reporting',
-        description:
-            'Generate detailed reports on sales, inventory, and customer activity to make data-driven decisions.',
-    },
-   
-];
 
 const PricingPage = () => {
     const [isAnnual, setIsAnnual] = useState(false);
-    const [expandedIndex, setExpandedIndex] = useState(null);
-
-    const handleToggle = (index) => {
-        setExpandedIndex(expandedIndex === index ? null :index);
-    };
 
     return (
         <section className="pricing-page">
             <div className="pricing-header">
-                <h1>Manage Your Sales and Customers Easily!</h1>
+                <h1>Manage Your Accounting with Ease!</h1>
                 <p>Start using Turkey's most comprehensive program at affordable prices.</p>
                 <div className="toggle-buttons">
                     <button
@@ -80,7 +37,7 @@ const PricingPage = () => {
                     <p className="subtext">
                         Designed for businesses without digital sales operations.
                     </p>
-                    <button className="try-button">Try Now !</button>
+                    <button className="try-button">14-Day Free Trial</button>
                     <ul>
                         <li><FaCheck /> Basic Accounting</li>
                         <li><FaCheck /> Customer Management</li>
@@ -97,7 +54,7 @@ const PricingPage = () => {
                     <p className="subtext">
                         Take your sales digital and manage everything in one place.
                     </p>
-                    <button className="try-button">Try Now !</button>
+                    <button className="try-button">14-Day Free Trial</button>
 
                     <ul>
                         <li><FaCheck /> Basic Accounting</li>
@@ -157,26 +114,30 @@ const PricingPage = () => {
                             <td><FaTimes className="icon-times" /></td>
                             <td><FaCheck className="icon-check" /></td>
                         </tr>
+                        <tr>
+                            <td>Multi-User Access</td>
+                            <td><FaTimes className="icon-times" /></td>
+                            <td><FaCheck className="icon-check" /></td>
+                        </tr>
                     </tbody>
                 </table>
             </div>
-            <div className="features-expand-container">
-                <h2>All Features in One Application</h2>
-                {featuresData.map((feature,index)=>(
-                    <div key={index} className="feature-item">
-                        <div className="feature-header" onClick={() => handleToggle(index)}>
-                            <h3>{feature.title}</h3>
-                            <span>{expandedIndex === index ? '-' : '+'}</span>
-                        </div>
-                        {expandedIndex === index && (
-                            <div className="feature-description">
-                                <p>{feature.description}</p>
-                            </div>
-                        )}
-                    </div>
-                ))}
-            </div>
 
+            <div className="features-expand">
+                <h2> All-Inclusive Features</h2>
+                <div className="feature">
+                    <button className="feature-toggle">+ Location-Based Customer Search</button>
+                    <p className="feature-description">Easily find and reach potential customers in your target areas.</p>
+                </div>
+                <div className="feature">
+                    <button className="feature-toggle">+  Inventory Tracking</button>
+                    <p className="feature-description">Keep track of your stock levels and avoid overstocking or stockouts.</p>
+                </div>
+                <div className="feature">
+                    <button className="feature-toggle">+ Advanced Reporting</button>
+                    <p className="feature-description">Get in-depth insights into your business performance with custom reports.</p>
+                </div>
+            </div>
         </section>
     );
 

@@ -54,7 +54,7 @@ const PricingPage = () => {
     return (
         <section className="pricing-page">
             <div className="pricing-header">
-                <h1>Manage Your Sales and Customers Easily!</h1>
+                <h1>Manage Your Accounting with Ease!</h1>
                 <p>Start using Turkey's most comprehensive program at affordable prices.</p>
                 <div className="toggle-buttons">
                     <button
@@ -80,7 +80,7 @@ const PricingPage = () => {
                     <p className="subtext">
                         Designed for businesses without digital sales operations.
                     </p>
-                    <button className="try-button">Try Now !</button>
+                    <button className="try-button">14-Day Free Trial</button>
                     <ul>
                         <li><FaCheck /> Basic Accounting</li>
                         <li><FaCheck /> Customer Management</li>
@@ -97,7 +97,7 @@ const PricingPage = () => {
                     <p className="subtext">
                         Take your sales digital and manage everything in one place.
                     </p>
-                    <button className="try-button">Try Now !</button>
+                    <button className="try-button">14-Day Free Trial</button>
 
                     <ul>
                         <li><FaCheck /> Basic Accounting</li>
@@ -154,6 +154,11 @@ const PricingPage = () => {
                         </tr>
                         <tr>
                             <td>Advanced Reporting</td>
+                            <td><FaTimes className="icon-times" /></td>
+                            <td><FaCheck className="icon-check" /></td>
+                        </tr>
+                        <tr>
+                            <td>Multi-User Access</td>
                             <td><FaTimes className="icon-times" /></td>
                             <td><FaCheck className="icon-check" /></td>
                         </tr>
