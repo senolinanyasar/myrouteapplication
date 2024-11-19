@@ -1,0 +1,97 @@
+/* FeaturesPage.css */
+
+.feature-page{
+    font-family: 'Arial', sans-serif;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    background-color: #f0fdeb;
+  
+}
+.features-container{
+    max-width: 1200px;
+    width: 100%;
+    padding: 0 20px;
+
+}
+.features-hero{
+    text-align: center;
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+.features-hero h1 {
+    font-size: 2.5rem;
+    color: #333;
+}
+
+.features-hero p {
+    font-size: 1.2rem;
+    color: #666;
+    margin-top: 10px;
+
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fe));
+    gap: 20px;
+    margin-bottom: 40px;
+}
+
+.feature-card{
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feature-card:hover{
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.feature-card.active{
+    background-color: #9fe7c0;
+    color: #fff;
+}
+
+.feature-icon {
+    font-size: 2.5rem;
+    color: #9fe7c0;
+    margin-bottom: 10px;
+}
+
+.feature-details {
+    background: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 40px;
+}
+
+.feature-details h2 {
+    color: #9fe7c0;
+}
+
+.features-cta {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.cta-button {
+    background: #006d77;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.cta-button:hover {
+    background: #9fe7c0;
+}

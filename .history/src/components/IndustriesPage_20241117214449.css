@@ -1,0 +1,127 @@
+/* IndustriesPage.css */
+
+.industries-page {
+    font-family: 'Arial', sans-serif;
+    color: #333;
+    line-height: 1.5;
+}
+
+.industries-header {
+    text-align: center;
+    margin-bottom: 2rem;
+    padding: 2rem 1rem;
+    background: linear-gradient(to right, #e3f8df, #f4fdfb);
+}
+
+.industries-header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.industries-header p {
+    font-size: 1.2rem;
+    color: #555;
+    margin-bottom: 1.5rem;
+}
+
+.industries-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.industry-button {
+    padding: 0.8rem 1.5rem;
+    border: none;
+    border-radius: 20px;
+    background-color: #006d77;
+    color: #fff;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s;
+}
+
+.industry-button:hover {
+    background-color: #005259;
+}
+
+.industry-section {
+    padding: 2rem 1rem;
+    margin-bottom: 3rem;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+}
+
+.industry-title-box {
+    background-color: #006d77;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    display: inline-block;
+    border-radius: 5px;
+}
+
+.industry-header {
+    font-size: 1.8rem;
+    margin: 1rem 0;
+}
+
+.industry-description {
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+    color: #666;
+}
+
+.industry-features {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.industry-feature h4 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+}
+
+.feature-divider {
+    width: 50px;
+    height: 2px;
+    background-color: #006d77;
+    margin-bottom: 0.5rem;
+}
+
+.industry-testimonial {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.testimonial-text {
+    flex: 1;
+}
+
+.testimonial-text h4 {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+    color: #006d77;
+}
+
+.testimonial-text p {
+    margin-bottom: 1rem;
+}
+
+.testimonial-button {
+    padding: 0.7rem 1.2rem;
+    border: none;
+    background-color: #006d77;
+    color: white;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.testimonial-image img {
+    width: 100%;
+    max-width: 200px;
+    border-radius: 10px;
+}

@@ -1,0 +1,32 @@
+/* FeaturesSection.css */
+.features {
+    padding: 2rem;
+    background-color: #f4a261;
+    color: #264653;
+    text-align: center;
+}
+
+.features h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.features-list {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.features-item{
+    background-color: white;
+    padding: 1.5rem;
+    margin: 1rem;
+    border-radius: 10px;
+    width: 200px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s ease-in-out;
+}
+
+.features-item:hover{
+    transform: translateY(-5px);
+}

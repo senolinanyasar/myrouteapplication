@@ -1,0 +1,60 @@
+/*SupportSection.css */
+.support-section{
+    background-color: #f9fafb;
+    padding: 4rem 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.support-content{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1200px;
+    gap: 2rem;
+}
+
+.support-text{
+    flex: 1;
+    max-width: 500px;
+    text-align: left;
+}
+.support-text h2{
+    font-size: 2rem;
+    color: #264653;
+    margin-bottom: 1rem;
+}
+
+.support-text p {
+    font-size: 1.1rem;
+    color: #6d6d6d;
+    margin-bottom: 1rem;
+  }
+  
+  .cta-button {
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+    color: #2f5d5b;
+    background-color: #9fe7c0; /* Light green button */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .cta-button:hover {
+    background-color: #c3f2d0;
+  }
+  
+  .support-image {
+    flex: 1;
+    max-width: 500px;
+  }
+  
+  .support-image img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 10px;
+  }

@@ -1,0 +1,166 @@
+/* IndustriesPage.css */
+
+.industries-page {
+    font-family: 'Arial', sans-serif;
+    padding: 20px;
+    max-width: 1200px;
+    background-color: #f0fdeb;
+    margin: 0 auto;
+}
+
+.industries-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.industries-header h1 {
+    font-size: 2.5rem;
+    color: #033956;
+}
+
+.industries-header p {
+    font-size: 1rem;
+    color: #555;
+    margin: 15px auto;
+    max-width: 800px;
+}
+
+.industries-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background-color: #f0fdeb;
+    padding: 10px 0;
+   
+}
+
+.industry-button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    background-color: #9fe7c0;
+    color: #fff;
+    cursor: pointer;
+    font-size: 0.9rem;
+   
+}
+
+.industry-button:hover {
+    background-color: #c3f2d0;
+}
+
+.industry-section {
+    padding: 20px;
+    margin: 30px 0;
+    background: #f0fdeb;
+    border-radius: 10px;
+    
+}
+
+.industry-title-box {
+    font-size: 1.4rem;
+    background-color: #f0fdeb;
+    color: #006d77;
+    padding: 5px 15px;
+    display: inline-block;
+    border-radius: 5px;
+    margin-bottom: 20px;
+
+}
+
+.industry-header {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: #033956;
+    font-weight: bold;
+    text-align: center;
+}
+
+.industry-description {
+    font-size: 1rem;
+    margin-bottom: 1.30px;
+    color: #555;
+}
+
+.industry-features {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 40px;
+}
+.industry-feature {
+    background-color: #f0fdeb;
+    padding: 15px;
+    border-radius: 8px;
+    
+}
+.industry-feature h4 {
+    font-size: 1.2rem;
+    margin-bottom: 8px;
+    color: #006d77;
+    
+
+}
+
+.feature-divider {
+    width: 100%;
+    height: 2px;
+    background-color: #006d77;
+    margin-bottom: 10px;
+}
+.industry-feature p {
+    font-size: 1rem;
+    color: #555;
+}
+
+.industry-testimonial {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
+.testimonial-text {
+    text-align: left;
+    flex: 1;
+}
+
+.testimonial-text h4 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: #006d77;
+   
+}
+
+.testimonial-text p {
+    margin-bottom: 20px;
+    color: #555;
+    font-size: 1rem;
+}
+
+.testimonial-button {
+    padding: 10px 15px;
+    border: none;
+    background-color: #006d77;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+.testimonial-button:hover {
+    background-color: #005f87;
+}
+.testimonial-image img {
+    width: 600px;
+    height: 400px;
+    object-fit: cover;
+   
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+footer {
+    margin-top: 40px;
+}

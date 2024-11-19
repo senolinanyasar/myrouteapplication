@@ -1,0 +1,75 @@
+/* FeaturesSection.css */
+.features-section {
+    padding: 4rem 2rem;
+    text-align: center;
+}
+
+.features-title {
+    font-size: 2rem;
+    font-weight: 600;
+    color: #264653;
+    margin-bottom: 3rem;
+    line-height: 1.2;
+}
+
+
+
+.feature {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 4rem;
+    flex-direction: row;
+}
+
+.feature:nth-child(even) {
+    flex-direction: row-reverse;
+}
+
+.feature-text {
+    flex: 1;
+    max-width: 500px;
+    text-align: left;
+}
+
+.features h3 {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: #264653;
+    margin-bottom: 1rem;
+}
+
+.feature-text p {
+    font-size: 1.1rem;
+    color: #6d6d6d;
+    margin-bottom: 1.5rem;
+}
+
+.cta-button {
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+    color: #2f5d5b;
+    background-color: #9fe7c0;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.cta-button:hover {
+    background-color: #c3f2d0;
+}
+
+.feature-image {
+    flex: 1;
+    max-width: 400px;
+    height: auto;
+}
+
+.feature-image img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 10px;
+}
