@@ -1,11 +1,7 @@
 /* PricingPage.css */
 
 .pricing-page{
-<<<<<<< HEAD
     font-family: 'Poppins';
-=======
-    font-family: "Arial",sans-serif;
->>>>>>> 32f3b973a2e700d5e86e8571b9af5d664df9ef1c
     padding: 20px;
     text-align: center;
     background-color: #f9f9f9;
@@ -137,10 +133,7 @@
     padding: 20px;
     background-color: #f9f9f9;
     text-align: center;
-<<<<<<< HEAD
     
-=======
->>>>>>> 32f3b973a2e700d5e86e8571b9af5d664df9ef1c
   }
   
   .comparison-table-container h2 {
@@ -153,7 +146,6 @@
     max-width: 800px;
     margin: 0 auto;
     border-collapse: collapse;
-<<<<<<< HEAD
     font-family: 'Poppins';
     background: #fff;
     border-radius: 8px;
@@ -161,13 +153,6 @@
     margin-bottom: 25px;
     
     
-=======
-    font-family: Arial, sans-serif;
-    background: #fff;
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
->>>>>>> 32f3b973a2e700d5e86e8571b9af5d664df9ef1c
   }
   
   .comparison-table th,
@@ -218,13 +203,8 @@
     padding: 20px;
     background-color: #f9f9f9;
     border-radius: 8px;
-<<<<<<< HEAD
     margin-top: 50px;
     margin-bottom: 80px;
-=======
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    margin-top: 50px;
->>>>>>> 32f3b973a2e700d5e86e8571b9af5d664df9ef1c
 }
 
 .features-expand-container h2{
