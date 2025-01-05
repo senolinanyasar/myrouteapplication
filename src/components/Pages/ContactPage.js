@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import "./ContactPage.css";
+import ContactForm from "./ContactForm";
 
 const faqs = [
     {
@@ -56,30 +57,7 @@ const ContactPage = () => {
             </div>
 
             <div className="contact-content">
-                <div className="contact-form">
-                    <h2>Send Us a Message</h2>
-                    <form>
-                        <div className="form-group">
-                            <label htmlFor="email">Email</label>
-                            <input type="email" id="name" placeholder="Your Name" required />
-                        </div>
-                        <div className="form-group">
-                            <label htmlFor="phone">Phone</label>
-                            <input type="tel" id="phone" placeholder="Your Phone Number" />
-                        </div>
-                        <div className="form-group">
-                            <label htmlFor="message">Message</label>
-                            <textarea
-                                id="message"
-                                rows="4"
-                                placeholder="Your Message"
-                                required></textarea>
-                        </div>
-                        <button type="submit" className="submit-button">
-                            Send Message
-                        </button>
-                    </form>
-                </div>
+                <ContactForm />
 
                 <div className="contact-details">
                     <h2>Contact Information</h2>

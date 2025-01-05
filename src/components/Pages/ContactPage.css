@@ -31,49 +31,6 @@
     margin-bottom: 3rem;
 }
 
-.contact-form{
-    flex: 1;
-    min-width: 300px;
-    max-width: 48%;
-}
-
-.contact-form h2{
-    font-size: 1.6rem;
-    color: #1a535c;
-    margin-bottom: 1rem;
-}
-
-.contact-form .form-group{
-    margin-bottom: 1rem;
-}
-
-.contact-form label{
-    display: block;
-    font-size: 1rem;
-    margin-bottom: 0.5rem;
-}
-.contact-form input,
-.contact-form textarea {
-    width: 100%;
-    padding: 0.8rem;
-    border: 1px solid #bfbfbf;
-    border-radius: 5px;
-}
-
-.contact-form .submit-button{
-    background-color: #2d6a4f;
-    color: #fff;
-    border: none;
-    padding: 0.8rem 1.5rem;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.contact-form .submit-button:hover{
-    background-color: #1b4332;
-}
-
 .contact-details{
     flex: 1;
     min-width: 300px;
