@@ -106,7 +106,7 @@ const ContactPage = () => {
                 <h2>Find Us Here</h2>
                 <iframe
                     title="Google Map"
-                    src="https://www.google.com/maps/dir/38.4663552,27.181056/ya%C5%9Far+%C3%BCniversitesi/@38.4591055,27.1754348,14z/data=!3m1!4b1!4m9!4m8!1m1!4e1!1m5!1m1!1s0x14b97d34b9894483:0xccea44297ef6299!2m2!1d27.2022886!2d38.4547698?entry=ttu&g_ep=EgoyMDI0MTExNy4wIKXMDSoASAFQAw%3D%3D"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3124.424078277348!2d27.19971367637999!3d38.4547697718219!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14b97d34b9894483%3A0xccea44297ef6299!2zWWHFn2FyIMOcbml2ZXJzaXRlc2k!5e0!3m2!1str!2str!4v1736083184762!5m2!1str!2str"
                     allowFullScreen=""
                     loading="lazy"
                 ></iframe>
