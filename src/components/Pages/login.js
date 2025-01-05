@@ -18,7 +18,7 @@ function LoginPage() {
     // Giriş başarılı ise yönlendir
     if (username === 'admin' && password === 'admin') {
       setError('');
-      navigate('/profile');
+      navigate('/panel');
     } else {
       setError('Hatalı kullanıcı adı veya şifre!');
     }

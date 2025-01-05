@@ -14,15 +14,23 @@ const Header = () => {
                     <Link to="/industries">Industries</Link>
                     <Link to="/pricing">Price</Link>
                     <Link to="/aboutus">About Us</Link>
-                    <Link to="/contact">Contact</Link>
-                    
-               
-
+                    <Link to="/contact">Contact Us</Link>
+                    <Link to="/panel">Contact Us</Link>
+                   
             </nav>
             <div className="header-buttons">
+                
+                <Link to="/login">
                 <button className="login-button">Sing in</button>
+                </Link>
+                
+                </div>
+                <div className="header-buttons">   
+                <Link to="/register">
                 <button className="register-button">Sing Up</button>
-            </div>
+                </Link>
+                
+           </div>
         </header>
     );
 };

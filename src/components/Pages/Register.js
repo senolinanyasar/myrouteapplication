@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-
+import './Register.css';
 const Register = () => {
   // Kullanıcı verilerini tutmak için state kullanacağız
   const [formData, setFormData] = useState({
@@ -83,5 +83,5 @@ const Register = () => {
 };
 
 export default Register;
-import './Register.css';
+
 
