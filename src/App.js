@@ -10,7 +10,7 @@ import FeaturesPage from './components/Pages/FeaturesPage';
 import ContactPage from './components/Pages/ContactPage';
 import AboutusPage from './components/Pages/AboutusPage';
 import Dashboard from './components/panels/Dashboard';
-
+import ScrollToTop from "./components/Pages/ScrollToTop";
 import Register from './components/Pages/Register';
 import LoginPage from './components/Pages/login';
 
@@ -32,7 +32,10 @@ function App() {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<Register />} />
       </Routes>
+      <ScrollToTop />
+      
       <Footer/>
+      
     </Router>
 
   );
