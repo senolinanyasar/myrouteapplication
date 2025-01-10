@@ -4,8 +4,8 @@ import "./ContactForm.css";
 
 const ContactForm = () => {
   const [formData, setFormData] = useState({
+    name: "",
     email: "",
-    phone: "",
     message: "",
   });
   const [statusMessage, setStatusMessage] = useState("");
@@ -29,7 +29,7 @@ const ContactForm = () => {
       const result = await response.json();
       if (response.ok) {
         setStatusMessage(result.message);
-        setFormData({ email: "", phone: "", message: "" });
+        setFormData({ name: "", email: "", message: "" });
       } else {
         setStatusMessage(result.message || "Something went wrong.");
       }
@@ -42,6 +42,16 @@ const ContactForm = () => {
     <div className="contact-form">
       <h2>Send Us a Message</h2>
       <form onSubmit={handleSubmit}>
+     <div className="form-group">
+          <label htmlFor="name">Name</label>
+          <input
+            type="name"
+            id="name"
+            placeholder="Your Name"
+            value={formData.name}
+            onChange={handleChange}
+          />
+        </div>
         <div className="form-group">
           <label htmlFor="email">Email</label>
           <input
@@ -50,16 +60,6 @@ const ContactForm = () => {
             placeholder="Your Email"
             required
             value={formData.email}
-            onChange={handleChange}
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="phone">Phone</label>
-          <input
-            type="tel"
-            id="phone"
-            placeholder="Your Phone Number"
-            value={formData.phone}
             onChange={handleChange}
           />
         </div>
