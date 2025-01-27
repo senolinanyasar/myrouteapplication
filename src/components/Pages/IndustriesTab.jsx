@@ -1,9 +1,9 @@
 // IndustriesTab.js
 import React, { useState } from "react";
 import './IndustriesTab.css';
-import distributorImage from '../images/supportimage.jpg'
-import wholesaleImage from '../images/supportimage.jpg'
-import productionImage from '../images/supportimage.jpg'
+import distributorImage from '../images/distribitor-1.png'
+import wholesaleImage from '../images/retailsales.png'
+import productionImage from '../images/production.png'
 
 
 

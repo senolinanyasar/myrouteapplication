@@ -18,16 +18,16 @@ import LoginPage from './components/Pages/login';
 function MainApp() {
   return (
     <>
-      <TopBar />
-      <Header />
+       <TopBar />
+       <Header />
       <Routes>
+        
         <Route path="/" element={<HomePage />} />
         <Route path="/pricing" element={<PricingPage />} />
         <Route path="/industries" element={<IndustriesPage />} />
         <Route path="/features" element={<FeaturesPage />} />
         <Route path="/aboutus" element={<AboutusPage />} />
         <Route path="/contact" element={<ContactPage />} />
-        <Route path="/panel" element={<Dashboard />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<LoginPage />} />
       </Routes>

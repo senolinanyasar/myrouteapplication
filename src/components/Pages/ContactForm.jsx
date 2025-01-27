@@ -18,7 +18,7 @@ const ContactForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch("http://localhost:5000/send-contact", {
+      const response = await fetch("http://localhost:5001/send-contact", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

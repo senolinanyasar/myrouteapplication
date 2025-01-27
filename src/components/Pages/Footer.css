@@ -17,10 +17,8 @@
     max-width: 300px;
 }
 
-.footer-logo h2{
-    font-size: 1.5rem;
-    color: #ffffff;
-    margin-bottom: 2rem;
+.footer-logo{
+   margin-bottom: 25px;
 }
 
 
@@ -80,7 +78,7 @@
     color: #ffffff;
 }
 
-.footer-bottom{
+.footer-bottom p{
     text-align: center;
     font-size: 0.8rem;
     color: #c3c3c3;

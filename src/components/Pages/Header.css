@@ -14,14 +14,17 @@
 }
 
 
-.header-logo {
-    font-size: 1.5rem;
-    font-weight: bold;
+.logo-image {
+    width: 100px; 
+    height: auto; 
+    object-fit: contain; 
+    margin-left: 20px;
 }
 .header-nav a{
     margin: 0 1rem;
     color: white;
     text-decoration: none;
+    margin-left: 40px;
 }
 .header-nav a:hover {
     color: #e9c46a;

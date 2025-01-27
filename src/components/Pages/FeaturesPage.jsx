@@ -3,43 +3,60 @@
 import React, { useState } from "react";
 import './FeaturesPage.css';
 import { FaCheckCircle } from "react-icons/fa";
-import feature1Image from "../images/production.jpg";
-import feature2Image from "../images/wholesale.jpg";
-import feature3Image from "../images/distributor.jpg";
+import feature1Image from "../images/crm.png";
+import feature2Image from "../images/find-loca.png";
+import feature3Image from "../images/stock.png";
+import feature4Image from "../images/reporting.png";
+import { Link } from "react-router-dom";
 
 const featuresData = [
     {
         id: "feature1",
         title: "Customer Management",
-        header: "Effortlessly manage your customer details and interactions.",
-        description: "'With My Route Application, you can store customer details, view past orders, track invoices, and manage communication efficiently.",
+        header: "Customer Management",
+        description: "'Effortlessly manage your customer details and interactions.",
         details: [
-            { feature: "Adding Automaticly Customer", description: " Lorem ipsum dolor sit amet, consectetur adipiscing elit, " },
-            { feature: "Customer Management", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit" },
+            { feature: "Adding Automaticly Customer", description: " You can quickly and automatically add companies listed by the Location plugin to your customer list. " },
+            { feature: "Sales View", description: "You can review your past sales to your customers and their current accounts." },
+            { feature: "Tracking", description: "Track invoices, and manage communication efficiently." },
         ],
         image: feature1Image,
     },
     {
         id: "feature2",
-        title: "Advanced Reporting",
-        header: "Gain insights into your business with detailed reports.",
-        description: "TOur advanced reporting tools help you track sales, customer trends, and performance metrics to make informed decisions.",
+        title: "Location-Based Customer Search",
+        header: "Location",
+        description: "Locate potential customers in your area",
         details: [
-            { feature: "Adding Automaticly Customer", description: " Lorem ipsum dolor sit amet, consectetur adipiscing elit, " },
-            { feature: "Customer Management", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit" },
+            { feature: "Searching", description: "Let us find potential customers that match the criteria you are looking for faster." },
+            { feature: "List", description: "Let us list the customers that fit the parameters you provide." },
+            { feature: "Route", description: "Let's create your most optimal route by selecting new customers listed or adding existing customers." },
         ],
         image: feature2Image,
     },
     {
         id: "feature3",
-        title: "Invoice Management",
-        header: "implify your invoice management process.",
-        description: "Generate, manage, and send invoices to customers with ease. Keep track of paid and unpaid invoices directly from the app.",
+        title: "Product Management",
+        header: "Product Management",
+        description: "Easily track your inventory, manage product categories, and monitor sales performance to ensure smooth and efficient product operations.",
         details: [
-            { feature: "Adding Automaticly Customer", description: " Lorem ipsum dolor sit amet, consectetur adipiscing elit, " },
-            { feature: "Customer Management", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit" },
+            { feature: "Inventory Tracking", description: "Monitor stock levels in real time to prevent stockouts or overstocking and follow up with automatic stock adjustments after sales or purchases." },
+            { feature: "Product Categorization", description: "Segment products into categories for better management." },
+            { feature: "Price Management", description: "Create special offers or discounts for selected products." },
         ],
         image: feature3Image,
+    },
+    {
+        id: "feature4",
+        title: "Comprehensive Reporting",
+        header: "Reporting",
+        description: "Gain actionable insights into your business performance with detailed reports on sales, expenses, inventory, and customer data. Make data-driven decisions effortlessly.",
+        details: [
+            { feature: "Sales Reports", description: "Visualize sales trends and identify top-performing products or services." },
+            { feature: "Expense Reports", description: "Identify areas where costs can be reduced or optimized." },
+            { feature: "Customer Reports", description: "Segment customers based on their buying behavior or demographics." },
+        ],
+        image: feature4Image,
     },
 ];
 
@@ -92,7 +109,9 @@ const FeaturesPage = () => {
             <div className="cta-section">
                 <h3>Ready to Transform Your Business?</h3>
                 <p>Sign up today and explore the limitless possibilities of our application!</p>
+                <Link to="/register">
                 <button className="cta-button">Get Started Now</button>
+                </Link>
             </div>
         </div>
     );

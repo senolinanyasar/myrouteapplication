@@ -2,11 +2,14 @@
 import React from 'react';
 import './Header.css';
 import { Link } from 'react-router-dom';
+import logo from '../images/logo-header.png';
 
 const Header = () => {
     return (
         <header className="header">
-            <div className="header-logo">logo</div>
+            <div className="header-logo">
+                <img src={logo} alt="Logo" className="logo-image" /> 
+            </div>
             <nav className="header-nav">
                
                     <Link to="/">Home</Link>
@@ -15,7 +18,6 @@ const Header = () => {
                     <Link to="/pricing">Price</Link>
                     <Link to="/aboutus">About Us</Link>
                     <Link to="/contact">Contact Us</Link>
-                    <Link to="/panel">Contact Us</Link>
                    
             </nav>
             <div className="header-buttons">

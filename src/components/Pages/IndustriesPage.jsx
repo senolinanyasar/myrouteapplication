@@ -1,8 +1,9 @@
 import React from "react";
 import './IndustriesPage.css';
-import distributorImage from '../images/distributor.jpg';
-import wholesaleImage from '../images/wholesale.jpg';
-import productionImage from '../images/production.jpg';
+import distributorImage from '../images/sarah.png';
+import wholesaleImage from '../images/john.png';
+import productionImage from '../images/linda.png';
+import { Link } from "react-router-dom";
 
 const industries = [
     {
@@ -134,7 +135,9 @@ const IndustriesPage = () => {
                         <div className="testimonial-text">
                             <h4>{industry.testimonial.name}</h4>
                             <p>{industry.testimonial.feedback}</p>
+                            <Link to="/features">
                             <button className="testimonial-button">{industry.testimonial.button}</button>
+                            </Link>
                         </div>
                         <div className="testimonial-image">
                             <img src={industry.testimonial.image} alt={industry.testimonial.name} />

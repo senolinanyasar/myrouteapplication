@@ -1,5 +1,5 @@
 
-import { Menu,ShoppingBag, TrendingUp, CreditCard, Settings, Users, MapPin,BarChart2} from 'lucide-react'
+import { Menu,ShoppingBag, TrendingUp, CreditCard, Settings, Users, MapPin,BarChart2,LogOut} from 'lucide-react'
 import React from 'react'
 import {AnimatePresence, motion } from 'framer-motion';
 import { useState } from 'react';
@@ -61,6 +61,13 @@ const Sidebar = () => {
 						</Link>
 					))}
 				</nav>
+				<div className="mt-auto">
+                    <button onClick={() => {console.log('Logged out');}}
+                        className="flex items-center justify-center p-4 w-full text-sm font-medium text-red-500 rounded-lg hover:bg-gray-700 transition-colors">
+                        <LogOut size={20} className="min-w-4" />
+                        {isSidebarOpen && (<span className="ml-4">Logout</span>)}
+                    </button>
+                </div>
 			</div>
 		</motion.div>
 	);

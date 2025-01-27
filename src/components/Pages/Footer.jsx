@@ -3,14 +3,15 @@
 import React from 'react';
 import './Footer.css';
 import { FaFacebook, FaInstagram, FaLinkedin, FaTwitter, FaYoutube } from 'react-icons/fa';
+import logo from '../images/logo-header.png';
 
 const Footer = () => {
     return (
         <footer className="footer">
             <div className='footer-content'>
                 <div className='footer-left'>
-                    <div className='footer-logo'>
-                        <h2>My Route Application</h2>
+                    <div className="footer-logo">
+                        <img src={logo} alt="Logo" className="logo-image" />
                     </div>
                     <p>Kazımdirik Mahallesi, Üniversite <br />Caddesi Ağaçlı Yol No: 37-39, <br />35100 Bornova/İzmir</p>
                     <div className='social-icons'>
@@ -21,9 +22,9 @@ const Footer = () => {
                         <FaYoutube />
                     </div>
                 </div>
-                
+
                 <div className="footer-right">
-                <br/><br/><br/><br/>
+                    <br /><br /><br /><br />
                     <div className='footer-section'>
                         <h4>Features</h4>
                         <ul>

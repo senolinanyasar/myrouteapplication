@@ -5,11 +5,13 @@ import FeaturesSection from './FeaturesSection';
 import PricingSection from './PricingSection';
 import SupportSection from './SupportSection';
 import IndustriesTab from './IndustriesTab';
+import Header from './Header';
+import TopBar from './TopBar';
 
 const HomePage = () => {
     return (
         <div>
-        
+           
             <HeroSection />
             <FeaturesSection />
             <SupportSection />
