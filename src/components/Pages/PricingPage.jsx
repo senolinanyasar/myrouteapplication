@@ -75,7 +75,7 @@ const PricingPage = () => {
                 <div className="plan basic-plan">
                     <h3>Basic Plan</h3>
                     <p className="price">
-                        {isAnnual ? "$999/year" : "$99/month"}
+                        {isAnnual ? "$99/year" : "$10/month"}
                     </p>
                     <p className="subtext">
                         Designed for businesses without digital sales operations.
@@ -92,7 +92,7 @@ const PricingPage = () => {
                 <div className="plan premium-plan">
                     <h3>Premium Plan</h3>
                     <p className="price">
-                        {isAnnual ? "$2.799/year" : "$299/month"}
+                        {isAnnual ? "$199/year" : "$25/month"}
                     </p>
                     <p className="subtext">
                         Take your sales digital and manage everything in one place.

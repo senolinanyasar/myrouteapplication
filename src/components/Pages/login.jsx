@@ -29,7 +29,6 @@ function LoginPage() {
 
       if (response.ok) {
         setError('');
-        alert('Login successful!');
         navigate('/admin'); 
       } else {
         setError(data.message || 'Login failed!');

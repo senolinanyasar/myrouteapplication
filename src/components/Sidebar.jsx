@@ -62,11 +62,13 @@ const Sidebar = () => {
 					))}
 				</nav>
 				<div className="mt-auto">
+					<Link to="/">
                     <button onClick={() => {console.log('Logged out');}}
                         className="flex items-center justify-center p-4 w-full text-sm font-medium text-red-500 rounded-lg hover:bg-gray-700 transition-colors">
                         <LogOut size={20} className="min-w-4" />
                         {isSidebarOpen && (<span className="ml-4">Logout</span>)}
                     </button>
+					</Link>
                 </div>
 			</div>
 		</motion.div>
