@@ -17,7 +17,7 @@ function LoginPage() {
     }
 
     try {
-      const response = await fetch('http://localhost:5001/api/login', {
+      const response = await fetch('api/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -35,6 +35,8 @@ function LoginPage() {
       }
     } catch (error) {
       console.error('Error during login:', error);
+      console.error("Error stack:", error.stack);
+      console.error("Error message:", error.message);
       setError('An error occurred. Please try again later.');
     }
   };
@@ -42,7 +44,7 @@ function LoginPage() {
   return (
     <div className="wrapper">
       <div className="login-container">
-        <h2>Sing In</h2>
+        <h2>Sign In</h2>
         <form onSubmit={handleSubmit}>
           <div className="input-group">
             <label htmlFor="email">Email</label>
