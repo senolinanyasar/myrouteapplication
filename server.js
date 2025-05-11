@@ -103,10 +103,7 @@ app.use(cors({
 }));
 app.use(express.json());
 
-// Ana route
-app.get("/", (req, res) => {
-  res.send("Server is running!");
-});
+
 
 // İletişim formu için endpoint
 app.post('/send-contact', async (req, res) => {
@@ -206,7 +203,51 @@ app.get('/api/products', async (req, res) => {
     res.status(500).json({ success: false, message: 'Error fetching products' });
   }
 });
+app.put('/api/products/:id', async (req, res) => {
+  const { id } = req.params;
+  const { name, category, price, stock, sales } = req.body;
+  
+  if (!name || !category || price === undefined || stock === undefined) {
+    return res.status(400).json({ success: false, message: 'Required fields missing' });
+  }
+  
+  try {
+    await db.run(`
+      UPDATE products 
+      SET name = ?, category = ?, price = ?, stock = ?, sales = ?
+      WHERE id = ?
+    `, [name, category, price, stock, sales || 0, id]);
+    
+    const updatedProduct = await db.get(`SELECT * FROM products WHERE id = ?`, [id]);
+    
+    if (!updatedProduct) {
+      return res.status(404).json({ success: false, message: 'Product not found' });
+    }
+    
+    res.status(200).json(updatedProduct);
+  } catch (error) {
+    console.error('Error updating product:', error);
+    res.status(500).json({ success: false, message: 'Error updating product' });
+  }
+});
 
+// Ürün sil
+app.delete('/api/products/:id', async (req, res) => {
+  const { id } = req.params;
+  
+  try {
+    const result = await db.run(`DELETE FROM products WHERE id = ?`, [id]);
+    
+    if (result.changes === 0) {
+      return res.status(404).json({ success: false, message: 'Product not found' });
+    }
+    
+    res.status(200).json({ success: true, message: 'Product deleted successfully' });
+  } catch (error) {
+    console.error('Error deleting product:', error);
+    res.status(500).json({ success: false, message: 'Error deleting product' });
+  }
+});
 // Yeni ürün ekle
 app.post('/api/products', async (req, res) => {
   const { name, category, price, stock, sales } = req.body;
@@ -266,5 +307,11 @@ async function startServer() {
     console.error('Server başlatılamadı:', err);
   }
 }
+app.use(express.static(path.join(__dirname, 'dist'))); // dist yerine build dersen klasör adını da öyle yap
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'dist', 'index.html')); // build yerine dist
+});
+
 
 startServer();
