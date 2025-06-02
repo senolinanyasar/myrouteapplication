@@ -55,6 +55,24 @@ const initDatabase = async () => {
       );
     `);
     console.log('Database table "products" created or already exists');
+
+    // Customers tablosu oluşturma
+    await db.exec(`
+      CREATE TABLE IF NOT EXISTS customers (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        name TEXT NOT NULL,
+        email TEXT UNIQUE NOT NULL,
+        phone TEXT NOT NULL,
+        address TEXT NOT NULL,
+        city TEXT NOT NULL,
+        country TEXT NOT NULL,
+        total_orders INTEGER DEFAULT 0,
+        total_spent REAL DEFAULT 0.0,
+        status TEXT DEFAULT 'active',
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+      );
+    `);
+    console.log('Database table "customers" created or already exists');
     
     // Test kullanıcısı olup olmadığını kontrol et
     const userCheck = await db.get(`SELECT * FROM users WHERE email = ?`, ['admin@example.com']);
@@ -89,6 +107,76 @@ const initDatabase = async () => {
       }
       console.log('Demo products created successfully');
     }
+
+    // Test müşterileri ekle (eğer müşteri yoksa)
+    const customerCount = await db.get(`SELECT COUNT(*) as count FROM customers`);
+    if (customerCount.count === 0) {
+      const demoCustomers = [
+        {
+          name: 'Ahmet Yılmaz',
+          email: 'ahmet.yilmaz@email.com',
+          phone: '+90 532 123 4567',
+          address: 'Kızılay Mahallesi No:123',
+          city: 'Ankara',
+          country: 'Turkey',
+          total_orders: 15,
+          total_spent: 1250.75,
+          status: 'active'
+        },
+        {
+          name: 'Fatma Demir',
+          email: 'fatma.demir@email.com',
+          phone: '+90 535 987 6543',
+          address: 'Beşiktaş Caddesi No:45',
+          city: 'Istanbul',
+          country: 'Turkey',
+          total_orders: 8,
+          total_spent: 567.30,
+          status: 'active'
+        },
+        {
+          name: 'Mehmet Kaya',
+          email: 'mehmet.kaya@email.com',
+          phone: '+90 542 456 7890',
+          address: 'Konak Mahallesi No:67',
+          city: 'Izmir',
+          country: 'Turkey',
+          total_orders: 22,
+          total_spent: 2100.45,
+          status: 'active'
+        },
+        {
+          name: 'Ayşe Özkan',
+          email: 'ayse.ozkan@email.com',
+          phone: '+90 533 321 6547',
+          address: 'Merkez Mahallesi No:89',
+          city: 'Bursa',
+          country: 'Turkey',
+          total_orders: 5,
+          total_spent: 299.99,
+          status: 'inactive'
+        },
+        {
+          name: 'Can Arslan',
+          email: 'can.arslan@email.com',
+          phone: '+90 544 789 1234',
+          address: 'Güzelyalı Bulvarı No:156',
+          city: 'Antalya',
+          country: 'Turkey',
+          total_orders: 12,
+          total_spent: 890.25,
+          status: 'active'
+        }
+      ];
+      
+      for (const customer of demoCustomers) {
+        await db.run(`
+          INSERT INTO customers (name, email, phone, address, city, country, total_orders, total_spent, status)
+          VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+        `, [customer.name, customer.email, customer.phone, customer.address, customer.city, customer.country, customer.total_orders, customer.total_spent, customer.status]);
+      }
+      console.log('Demo customers created successfully');
+    }
     
   } catch (error) {
     console.error('Error initializing database:', error);
@@ -102,8 +190,6 @@ app.use(cors({
   allowedHeaders: ["Content-Type"],
 }));
 app.use(express.json());
-
-
 
 // İletişim formu için endpoint
 app.post('/send-contact', async (req, res) => {
@@ -120,7 +206,7 @@ app.post('/send-contact', async (req, res) => {
     text: message,
   };
 
-  const transporter = nodemailer.createTransport({
+  const transporter = nodemailer.createTransporter({
     service: 'Gmail',
     auth: {
       user: process.env.GMAIL_USER || 'your-email@example.com',
@@ -203,6 +289,7 @@ app.get('/api/products', async (req, res) => {
     res.status(500).json({ success: false, message: 'Error fetching products' });
   }
 });
+
 app.put('/api/products/:id', async (req, res) => {
   const { id } = req.params;
   const { name, category, price, stock, sales } = req.body;
@@ -248,6 +335,7 @@ app.delete('/api/products/:id', async (req, res) => {
     res.status(500).json({ success: false, message: 'Error deleting product' });
   }
 });
+
 // Yeni ürün ekle
 app.post('/api/products', async (req, res) => {
   const { name, category, price, stock, sales } = req.body;
@@ -267,6 +355,87 @@ app.post('/api/products', async (req, res) => {
   } catch (error) {
     console.error('Error adding product:', error);
     res.status(500).json({ success: false, message: 'Error adding product' });
+  }
+});
+
+// CUSTOMER API ENDPOINTS
+// Tüm müşterileri getir
+app.get('/api/customers', async (req, res) => {
+  try {
+    const customers = await db.all(`SELECT * FROM customers ORDER BY id DESC`);
+    res.status(200).json(customers);
+  } catch (error) {
+    console.error('Error fetching customers:', error);
+    res.status(500).json({ success: false, message: 'Error fetching customers' });
+  }
+});
+
+// Müşteri güncelle
+app.put('/api/customers/:id', async (req, res) => {
+  const { id } = req.params;
+  const { name, email, phone, address, city, country, total_orders, total_spent, status } = req.body;
+  
+  if (!name || !email || !phone || !address || !city || !country) {
+    return res.status(400).json({ success: false, message: 'Required fields missing' });
+  }
+  
+  try {
+    await db.run(`
+      UPDATE customers 
+      SET name = ?, email = ?, phone = ?, address = ?, city = ?, country = ?, total_orders = ?, total_spent = ?, status = ?
+      WHERE id = ?
+    `, [name, email, phone, address, city, country, total_orders || 0, total_spent || 0.0, status || 'active', id]);
+    
+    const updatedCustomer = await db.get(`SELECT * FROM customers WHERE id = ?`, [id]);
+    
+    if (!updatedCustomer) {
+      return res.status(404).json({ success: false, message: 'Customer not found' });
+    }
+    
+    res.status(200).json(updatedCustomer);
+  } catch (error) {
+    console.error('Error updating customer:', error);
+    res.status(500).json({ success: false, message: 'Error updating customer' });
+  }
+});
+
+// Müşteri sil
+app.delete('/api/customers/:id', async (req, res) => {
+  const { id } = req.params;
+  
+  try {
+    const result = await db.run(`DELETE FROM customers WHERE id = ?`, [id]);
+    
+    if (result.changes === 0) {
+      return res.status(404).json({ success: false, message: 'Customer not found' });
+    }
+    
+    res.status(200).json({ success: true, message: 'Customer deleted successfully' });
+  } catch (error) {
+    console.error('Error deleting customer:', error);
+    res.status(500).json({ success: false, message: 'Error deleting customer' });
+  }
+});
+
+// Yeni müşteri ekle
+app.post('/api/customers', async (req, res) => {
+  const { name, email, phone, address, city, country, total_orders, total_spent, status } = req.body;
+  
+  if (!name || !email || !phone || !address || !city || !country) {
+    return res.status(400).json({ success: false, message: 'Required fields missing' });
+  }
+  
+  try {
+    const result = await db.run(`
+      INSERT INTO customers (name, email, phone, address, city, country, total_orders, total_spent, status)
+      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+    `, [name, email, phone, address, city, country, total_orders || 0, total_spent || 0.0, status || 'active']);
+    
+    const newCustomer = await db.get(`SELECT * FROM customers WHERE id = ?`, [result.lastID]);
+    res.status(201).json(newCustomer);
+  } catch (error) {
+    console.error('Error adding customer:', error);
+    res.status(500).json({ success: false, message: 'Error adding customer' });
   }
 });
 
@@ -307,11 +476,11 @@ async function startServer() {
     console.error('Server başlatılamadı:', err);
   }
 }
+
 app.use(express.static(path.join(__dirname, 'dist'))); // dist yerine build dersen klasör adını da öyle yap
 
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'dist', 'index.html')); // build yerine dist
 });
-
 
 startServer();
