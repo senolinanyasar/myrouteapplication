@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './Register.css';
 
 const Register = () => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     fullName: '',
     companyName: '',
@@ -63,7 +65,8 @@ const Register = () => {
     }
 
     try {
-      const response = await fetch('http://localhost:5001/api/register', {
+      // Dinamik API URL - port değişikliğine uyum sağlar
+      const response = await fetch('/api/register', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -79,7 +82,10 @@ const Register = () => {
       });
 
       if (response.ok) {
+        const result = await response.json();
         alert('Registration successful!');
+        
+        // Form sıfırla
         setFormData({
           fullName: '',
           companyName: '',
@@ -89,10 +95,22 @@ const Register = () => {
           password: '',
           confirmPassword: '',
         });
+        setPasswordCriteria({
+          length: false,
+          upperCase: false,
+          lowerCase: false,
+          number: false,
+          specialChar: false,
+        });
         setTermsAccepted(false);
+        
+        // Dashboard'a yönlendir
+        setTimeout(() => {
+          navigate('/admin');
+        }, 1000);
       } else {
         const errorData = await response.json();
-        alert(`Registration failed: ${errorData.message || 'Unknown error'}`);
+        alert(`Registration failed: ${errorData.error || errorData.message || 'Unknown error'}`);
       }
     } catch (error) {
       console.error('Error:', error);
@@ -102,7 +120,7 @@ const Register = () => {
 
   return (
     <div className="register-container">
-      <h2>Sing Up</h2>
+      <h2>Sign Up</h2>
       <form onSubmit={handleSubmit}>
         <div className="input-group">
           <label>Full Name</label>

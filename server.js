@@ -73,6 +73,26 @@ const initDatabase = async () => {
       );
     `);
     console.log('Database table "customers" created or already exists');
+
+    // Sales tablosu oluşturma
+    await db.exec(`
+      CREATE TABLE IF NOT EXISTS sales (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        customer_id INTEGER NOT NULL,
+        product_id INTEGER NOT NULL,
+        quantity INTEGER NOT NULL,
+        unit_price REAL NOT NULL,
+        total_price REAL NOT NULL,
+        discount REAL DEFAULT 0.0,
+        final_price REAL NOT NULL,
+        sale_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+        status TEXT DEFAULT 'completed',
+        notes TEXT,
+        FOREIGN KEY (customer_id) REFERENCES customers (id),
+        FOREIGN KEY (product_id) REFERENCES products (id)
+      );
+    `);
+    console.log('Database table "sales" created or already exists');
     
     // Test kullanıcısı olup olmadığını kontrol et
     const userCheck = await db.get(`SELECT * FROM users WHERE email = ?`, ['admin@example.com']);
@@ -177,6 +197,43 @@ const initDatabase = async () => {
       }
       console.log('Demo customers created successfully');
     }
+
+    // Test satış verileri ekle (eğer satış yoksa)
+    const salesCount = await db.get(`SELECT COUNT(*) as count FROM sales`);
+    if (salesCount.count === 0) {
+      const demoSales = [
+        {
+          customer_id: 1,
+          product_id: 1,
+          quantity: 10,
+          unit_price: 1.99,
+          total_price: 19.90,
+          discount: 0.0,
+          final_price: 19.90,
+          status: 'completed',
+          notes: 'İlk test satışı'
+        },
+        {
+          customer_id: 2,
+          product_id: 2,
+          quantity: 5,
+          unit_price: 2.99,
+          total_price: 14.95,
+          discount: 2.0,
+          final_price: 12.95,
+          status: 'completed',
+          notes: 'Orange satışı - indirimli'
+        }
+      ];
+      
+      for (const sale of demoSales) {
+        await db.run(`
+          INSERT INTO sales (customer_id, product_id, quantity, unit_price, total_price, discount, final_price, status, notes)
+          VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+        `, [sale.customer_id, sale.product_id, sale.quantity, sale.unit_price, sale.total_price, sale.discount, sale.final_price, sale.status, sale.notes]);
+      }
+      console.log('Demo sales created successfully');
+    }
     
   } catch (error) {
     console.error('Error initializing database:', error);
@@ -185,7 +242,7 @@ const initDatabase = async () => {
 
 // CORS ve JSON middleware'leri
 app.use(cors({
-  origin: "*", // Frontend için bu adres kalabilir
+  origin: "*",
   methods: ["GET", "POST", "PUT", "DELETE"],
   allowedHeaders: ["Content-Type"],
 }));
@@ -278,8 +335,7 @@ app.post("/api/login", async (req, res) => {
   }
 });
 
-// Ürün API endpoint'leri
-// Tüm ürünleri getir
+// PRODUCT API ENDPOINTS
 app.get('/api/products', async (req, res) => {
   try {
     const products = await db.all(`SELECT * FROM products ORDER BY id DESC`);
@@ -318,7 +374,6 @@ app.put('/api/products/:id', async (req, res) => {
   }
 });
 
-// Ürün sil
 app.delete('/api/products/:id', async (req, res) => {
   const { id } = req.params;
   
@@ -336,7 +391,6 @@ app.delete('/api/products/:id', async (req, res) => {
   }
 });
 
-// Yeni ürün ekle
 app.post('/api/products', async (req, res) => {
   const { name, category, price, stock, sales } = req.body;
   
@@ -359,7 +413,6 @@ app.post('/api/products', async (req, res) => {
 });
 
 // CUSTOMER API ENDPOINTS
-// Tüm müşterileri getir
 app.get('/api/customers', async (req, res) => {
   try {
     const customers = await db.all(`SELECT * FROM customers ORDER BY id DESC`);
@@ -370,7 +423,6 @@ app.get('/api/customers', async (req, res) => {
   }
 });
 
-// Müşteri güncelle
 app.put('/api/customers/:id', async (req, res) => {
   const { id } = req.params;
   const { name, email, phone, address, city, country, total_orders, total_spent, status } = req.body;
@@ -399,7 +451,6 @@ app.put('/api/customers/:id', async (req, res) => {
   }
 });
 
-// Müşteri sil
 app.delete('/api/customers/:id', async (req, res) => {
   const { id } = req.params;
   
@@ -417,7 +468,6 @@ app.delete('/api/customers/:id', async (req, res) => {
   }
 });
 
-// Yeni müşteri ekle
 app.post('/api/customers', async (req, res) => {
   const { name, email, phone, address, city, country, total_orders, total_spent, status } = req.body;
   
@@ -436,6 +486,175 @@ app.post('/api/customers', async (req, res) => {
   } catch (error) {
     console.error('Error adding customer:', error);
     res.status(500).json({ success: false, message: 'Error adding customer' });
+  }
+});
+
+// SALES API ENDPOINTS
+app.get('/api/sales', async (req, res) => {
+  try {
+    const sales = await db.all(`
+      SELECT 
+        s.*,
+        c.name as customer_name,
+        c.email as customer_email,
+        p.name as product_name,
+        p.category as product_category
+      FROM sales s
+      LEFT JOIN customers c ON s.customer_id = c.id
+      LEFT JOIN products p ON s.product_id = p.id
+      ORDER BY s.sale_date DESC
+    `);
+    res.status(200).json(sales);
+  } catch (error) {
+    console.error('Error fetching sales:', error);
+    res.status(500).json({ success: false, message: 'Error fetching sales' });
+  }
+});
+
+app.post('/api/sales', async (req, res) => {
+  const { customer_id, product_id, quantity, discount, notes } = req.body;
+  
+  if (!customer_id || !product_id || !quantity) {
+    return res.status(400).json({ success: false, message: 'Customer, product and quantity are required' });
+  }
+  
+  try {
+    const product = await db.get(`SELECT * FROM products WHERE id = ?`, [product_id]);
+    if (!product) {
+      return res.status(404).json({ success: false, message: 'Product not found' });
+    }
+    
+    if (product.stock < quantity) {
+      return res.status(400).json({ success: false, message: 'Insufficient stock' });
+    }
+    
+    const customer = await db.get(`SELECT * FROM customers WHERE id = ?`, [customer_id]);
+    if (!customer) {
+      return res.status(404).json({ success: false, message: 'Customer not found' });
+    }
+    
+    const unit_price = product.price;
+    const total_price = unit_price * quantity;
+    const discount_amount = discount || 0;
+    const final_price = total_price - discount_amount;
+    
+    const result = await db.run(`
+      INSERT INTO sales (customer_id, product_id, quantity, unit_price, total_price, discount, final_price, notes)
+      VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+    `, [customer_id, product_id, quantity, unit_price, total_price, discount_amount, final_price, notes || '']);
+    
+    await db.run(`
+      UPDATE products 
+      SET stock = stock - ?, sales = sales + ?
+      WHERE id = ?
+    `, [quantity, quantity, product_id]);
+    
+    await db.run(`
+      UPDATE customers 
+      SET total_orders = total_orders + 1, total_spent = total_spent + ?
+      WHERE id = ?
+    `, [final_price, customer_id]);
+    
+    const newSale = await db.get(`
+      SELECT 
+        s.*,
+        c.name as customer_name,
+        c.email as customer_email,
+        p.name as product_name,
+        p.category as product_category
+      FROM sales s
+      LEFT JOIN customers c ON s.customer_id = c.id
+      LEFT JOIN products p ON s.product_id = p.id
+      WHERE s.id = ?
+    `, [result.lastID]);
+    
+    res.status(201).json(newSale);
+  } catch (error) {
+    console.error('Error adding sale:', error);
+    res.status(500).json({ success: false, message: 'Error adding sale' });
+  }
+});
+
+app.delete('/api/sales/:id', async (req, res) => {
+  const { id } = req.params;
+  
+  try {
+    const sale = await db.get(`SELECT * FROM sales WHERE id = ?`, [id]);
+    if (!sale) {
+      return res.status(404).json({ success: false, message: 'Sale not found' });
+    }
+    
+    await db.run(`
+      UPDATE products 
+      SET stock = stock + ?, sales = sales - ?
+      WHERE id = ?
+    `, [sale.quantity, sale.quantity, sale.product_id]);
+    
+    await db.run(`
+      UPDATE customers 
+      SET total_orders = total_orders - 1, total_spent = total_spent - ?
+      WHERE id = ?
+    `, [sale.final_price, sale.customer_id]);
+    
+    const result = await db.run(`DELETE FROM sales WHERE id = ?`, [id]);
+    
+    if (result.changes === 0) {
+      return res.status(404).json({ success: false, message: 'Sale not found' });
+    }
+    
+    res.status(200).json({ success: true, message: 'Sale deleted successfully' });
+  } catch (error) {
+    console.error('Error deleting sale:', error);
+    res.status(500).json({ success: false, message: 'Error deleting sale' });
+  }
+});
+
+app.get('/api/sales/stats', async (req, res) => {
+  try {
+    const stats = await db.get(`
+      SELECT 
+        COUNT(*) as total_sales,
+        SUM(final_price) as total_revenue,
+        AVG(final_price) as avg_sale_amount,
+        SUM(quantity) as total_items_sold
+      FROM sales
+      WHERE status = 'completed'
+    `);
+    
+    const topProducts = await db.all(`
+      SELECT 
+        p.name,
+        SUM(s.quantity) as total_sold,
+        SUM(s.final_price) as total_revenue
+      FROM sales s
+      LEFT JOIN products p ON s.product_id = p.id
+      WHERE s.status = 'completed'
+      GROUP BY s.product_id, p.name
+      ORDER BY total_sold DESC
+      LIMIT 5
+    `);
+    
+    const topCustomers = await db.all(`
+      SELECT 
+        c.name,
+        COUNT(s.id) as total_orders,
+        SUM(s.final_price) as total_spent
+      FROM sales s
+      LEFT JOIN customers c ON s.customer_id = c.id
+      WHERE s.status = 'completed'
+      GROUP BY s.customer_id, c.name
+      ORDER BY total_spent DESC
+      LIMIT 5
+    `);
+    
+    res.status(200).json({
+      general_stats: stats,
+      top_products: topProducts,
+      top_customers: topCustomers
+    });
+  } catch (error) {
+    console.error('Error fetching sales stats:', error);
+    res.status(500).json({ success: false, message: 'Error fetching sales statistics' });
   }
 });
 
@@ -460,9 +679,7 @@ function findAvailablePort(startPort) {
 // Sunucuyu dinamik bir portla başlat
 async function startServer() {
   try {
-    // SQLite veritabanını aç
     await openDb();
-    // Tabloları oluştur
     await initDatabase();
     
     const availablePort = await findAvailablePort(3000);
@@ -477,10 +694,10 @@ async function startServer() {
   }
 }
 
-app.use(express.static(path.join(__dirname, 'dist'))); // dist yerine build dersen klasör adını da öyle yap
+app.use(express.static(path.join(__dirname, 'dist')));
 
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'dist', 'index.html')); // build yerine dist
+  res.sendFile(path.join(__dirname, 'dist', 'index.html'));
 });
 
 startServer();
